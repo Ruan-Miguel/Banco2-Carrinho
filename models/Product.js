@@ -1,4 +1,4 @@
-const { Sequelize, sequelize } = require('./db')
+const { Sequelize, sequelize } = require('./postgre')
 
 const Product = sequelize.define('product', {
     name: {
