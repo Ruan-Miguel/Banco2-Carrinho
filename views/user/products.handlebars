@@ -1,11 +1,11 @@
-<center><h1>Products List</h1></center>
-<div style="display: flex; justify-content: center;">
+<center><h1 class="mt-4">Products List</h1></center>
+<div class="mt-4" style="display: flex; justify-content: center;">
 {{#each products}}
-    <div class="card" style="width: 10rem;">
+    <div class="card" style="width: 10rem; margin-left: 1rem; margin-right: 1rem;">
         <div class="card-body">
             <center><h5 class="card-title">{{name}}</h5></center>
             <center><p class="card-text">{{price}}</p></center>
-            <button class="btn btn-primary">Colocar no carrinho</button>
+            <a href="/user/addProduct/{{id}}" style="color: snow; cursor: pointer" class="btn btn-primary mt-2">Colocar no carrinho</a>
         </div>
     </div>
 {{else}}
