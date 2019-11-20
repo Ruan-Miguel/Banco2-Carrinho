@@ -5,6 +5,12 @@ const Product = require('../models/Product')
     price: 400
 })*/
 
-Product.findAll().then(products => {
-    console.log("All users:", JSON.stringify(products, null, 4));
-})
+let list = async () => {
+    let result
+    await Product.findAll().then(products => {
+        result = products
+    })
+    return result
+}
+
+module.exports = list

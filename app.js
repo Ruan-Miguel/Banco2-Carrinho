@@ -22,7 +22,7 @@ const path = require('path')
 app.use('/user', user)
 
 //Others
-const PORT = 8081
+const PORT = 8080
 app.listen(PORT, () => {
     console.log(`Servidor so o ouro rodando em http://localhost:${PORT}`)
 })

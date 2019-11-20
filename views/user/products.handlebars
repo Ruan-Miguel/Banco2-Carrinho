@@ -1,0 +1,14 @@
+<center><h1>Products List</h1></center>
+<div style="display: flex; justify-content: center;">
+{{#each products}}
+    <div class="card" style="width: 10rem;">
+        <div class="card-body">
+            <center><h5 class="card-title">{{name}}</h5></center>
+            <center><p class="card-text">{{price}}</p></center>
+            <button class="btn btn-primary">Colocar no carrinho</button>
+        </div>
+    </div>
+{{else}}
+
+{{/each}}
+</div>
