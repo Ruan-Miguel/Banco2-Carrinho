@@ -1,6 +1,7 @@
 const express= require('express')
 const router = express.Router()
 const productController = require('../controllers/productController')
+const userController = require('../controllers/userController')
 const atualizarCarrinho = require('../models/redis')
 
 router.get('/login', (req, res) => {
@@ -15,7 +16,7 @@ router.post('/auth', (req, res) => {
     if (!temp || temp == '') {
         res.redirect('login')
     }
-
+    
     req.session.userName = temp
     res.redirect('/user/products')
 })
