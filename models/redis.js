@@ -8,7 +8,7 @@ const atualizarCarrinho = (user, id) => {
         }
 
         carrinho += id + ','
-        client.set(user, carrinho)
+        client.set(user, carrinho, 'EX', 7200)
     })
 }
 

@@ -5,8 +5,16 @@ const bodyParser = require('body-parser')
 const app = express()
 const user = require('./routes/user')
 const path = require('path')
+const session = require('express-session')
 
 //Settings
+    //Session
+    app.use(session({
+        secret: 'keyboard cat',
+        resave: false,
+        saveUninitialized: true
+    }))
+
     //Body Parser
     app.use(bodyParser.urlencoded({extended: true}))
     app.use(bodyParser.json())
