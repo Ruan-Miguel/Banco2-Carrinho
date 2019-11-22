@@ -1,6 +1,7 @@
 const express= require('express')
 const router = express.Router()
 const productController = require('../controllers/productController')
+const userController = require('../controllers/userController')
 const { atualizarCarrinho, retornaCarrinho, salvaUsuario } = require('../models/redis')
 
 router.get('/login', (req, res) => {
@@ -9,7 +10,6 @@ router.get('/login', (req, res) => {
 
 router.post('/auth', (req, res) => {
     let temp = req.body.userName
-    console.log(temp)
     temp = temp.trim()
 
     if (temp == '') {
@@ -40,9 +40,28 @@ router.get('/addProduct/:id', (req, res) => {
 })
 
 router.get('/save', (req, res) => {
-    salvaUsuario(req.session.userName)
+    retornaCarrinho(req.session.userName).then(list => {
+        userController.add(req.session.userName, list).then(() => {
+            res.redirect('/user/success')
+        })
+    })
+})
 
-    res.redirect('/user/login')
+router.get('/success', (req, res) => {
+    userController.search(req.session.userName).then(user => {
+        productController().then(products => {
+            let productsId = user.carrinho.split(',')
+            let productsName = []
+            productsId.forEach(id => {
+                product = products.find( product => {
+                    return product.id == id
+                })
+                productsName.push(product.name)
+            })
+            console.log(productsName)
+            res.render('user/success', {productsName})
+        }).catch(err => console.log('ta aqui>>>>>>>>>>>>>>>>>>>>>>>>>...' + err))
+    })
 })
 
 module.exports = router
