@@ -1,8 +1,8 @@
 const Product = require('../models/Product')
 
 /*Product.create({
-    name: 'Daniel',
-    price: 400
+    name: 'moto',
+    price: 16000
 })*/
 
 let list = async () => {

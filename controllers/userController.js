@@ -13,7 +13,7 @@ let search = async (name) => {
         if (!user) {
             result = null
         } else {
-            result = user.carrinho
+            result = user
         }
     })
     return result

@@ -24,9 +24,9 @@ const retornaCarrinho = async (user) => {
     return result
 }
 
-const salvaUsuario = (user, list) => {
+const salvaUsuario = (user) => {
     client.get(user, (err, carrinho) => {
-        userController.add(user, list)
+        userController.add(user, carrinho)
     })
 }
 

@@ -1,6 +1,6 @@
 const { Sequelize, sequelize } = require('./postgre')
 
-const User = sequelize.define('user', {
+const User = sequelize.define('usuario', {
     name: {
         type: Sequelize.STRING
     },
