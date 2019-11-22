@@ -1,8 +1,7 @@
 const express= require('express')
 const router = express.Router()
 const productController = require('../controllers/productController')
-const userController = require('../controllers/userController')
-const atualizarCarrinho = require('../models/redis')
+const { atualizarCarrinho, retornaCarrinho } = require('../models/redis')
 
 router.get('/login', (req, res) => {
     res.render('user/login')
@@ -22,8 +21,10 @@ router.post('/auth', (req, res) => {
 })
 
 router.get('/products', (req, res) => {
-    productController().then(products => {
-        res.render('user/products', {products})
+    retornaCarrinho(req.session.userName).then(list => {
+        productController().then(products => {
+            res.render('user/products', {products: products, list:list})
+        })
     })
 })
 
